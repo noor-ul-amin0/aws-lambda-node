@@ -1,0 +1,35 @@
+org: noorulamin
+app: aws-node
+service: aws-node
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+
+
+functions:
+  getUser:
+    handler: lambdas/user.getUser
+    events:
+      - http:
+          path: get-user/{id}
+          method: GET
+          cors: true
+  getUsers:
+    handler: lambdas/user.getUsers
+    events:
+      - http:
+          path: get-users
+          method: GET
+          cors: true
+  createUser:
+    handler: lambdas/user.createUser
+    events:
+      - http:
+          path: create-user
+          method: POST
+          cors: true
+
+
+           
